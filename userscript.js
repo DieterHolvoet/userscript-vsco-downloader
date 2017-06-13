@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Download images from vsco.co
 // @namespace    http://www.dieterholvoet.com
-// @version      1.0
+// @version      1.1
 // @description  Adds download buttons for the full-resolution images to thumbnails all over the site.
 // @author       Dieter Holvoet
 // @match        vsco.co/*
@@ -14,7 +14,7 @@
     'use strict';
 
     var parentSelectors = '.grid-column, .grid-row, .grid-item, .MasonryGridLayout-column',
-        itemSelectors = '.grid-item, .media-item, .MediaThumbnail';
+        itemSelectors = '.grid-item, .media-item, .MediaThumbnail, .DetailView-ImageMedia-ImageContainer';
 
     $(document.head).append('<style> .dl-btn { position: absolute; right: 15px; bottom: 15px; margin-right: 0 !important; background-color: white; transform: translateY(4rem); transition: transform .2s ease-in-out; } .relative { overflow: hidden } .relative:hover .dl-btn { transform: none; } </style>');
 
