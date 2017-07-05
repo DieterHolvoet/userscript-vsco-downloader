@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Download images from vsco.co
 // @namespace    http://www.dieterholvoet.com
-// @version      1.1
+// @version      1.2
 // @description  Adds download buttons for the full-resolution images to thumbnails all over the site.
 // @author       Dieter Holvoet
 // @match        vsco.co/*
@@ -21,7 +21,7 @@
     $(document.body).observe('childList subtree', handleSubtreeChange);
 
     function handleSubtreeChange(e) {
-        Array.from(e.addedNodes).forEach(function(addedNode) {
+        e.addedNodes.forEach(function(addedNode) {
             if ($(addedNode).is(itemSelectors)) {
                 appendButton(addedNode);
             } else {
