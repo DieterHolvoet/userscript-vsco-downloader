@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Download images from vsco.co
 // @namespace    http://www.dieterholvoet.com
-// @version      1.2
+// @version      1.2.1
 // @description  Adds download buttons for the full-resolution images to thumbnails all over the site.
 // @author       Dieter Holvoet
-// @match        vsco.co/*
+// @match        *://vsco.co/*
 // @grant        none
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js
 // @require      https://bowercdn.net/c/jquery-observe-2.0.2/jquery-observe.js
