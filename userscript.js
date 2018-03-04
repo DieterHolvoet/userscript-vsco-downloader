@@ -13,8 +13,7 @@
 (function() {
     'use strict';
 
-    var parentSelectors = '.grid-column, .grid-row, .grid-item, .MasonryGridLayout-column',
-        itemSelectors = '.grid-item, .media-item, .MediaThumbnail, .DetailView-ImageMedia-ImageContainer';
+    var itemSelectors = '.MediaImage';
 
     $(document.head).append('<style> .dl-btn { position: absolute; right: 15px; bottom: 15px; margin-right: 0 !important; background-color: white; transform: translateY(4rem); transition: transform .2s ease-in-out; } .relative { overflow: hidden } .relative:hover .dl-btn { transform: none; } </style>');
 
