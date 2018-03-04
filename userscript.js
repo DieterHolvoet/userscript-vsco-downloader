@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Download images from vsco.co
 // @namespace    http://www.dieterholvoet.com
-// @version      1.2.1
+// @version      1.2.2
 // @description  Adds download buttons for the full-resolution images to thumbnails all over the site.
 // @author       Dieter Holvoet
 // @match        *://vsco.co/*
