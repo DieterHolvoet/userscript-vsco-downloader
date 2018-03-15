@@ -7,6 +7,7 @@
 // @match        *://vsco.co/*
 // @grant        GM_download
 // @grant        GM_info
+// @grant        GM_notification
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js
 // @require      https://bowercdn.net/c/jquery-observe-2.0.2/jquery-observe.js
 // ==/UserScript==
@@ -55,11 +56,22 @@
             url: url,
             name: fileName,
             onerror: function (e) {
-                console.error('%c' + GM_info.script.name + '%c: Download failed. Reason: ' + e.error, 'font-weight: bold', 'font-weight: normal');
+                logError('Download failed. Reason: ' + e.error);
             }
         };
 
         GM_download(options);
+    }
+
+
+    function logError(message) {
+        var details = {
+            title: GM_info.script.name,
+            text: message,
+        };
+
+        GM_notification(details);
+        console.error('%c' + GM_info.script.name + '%c: ' + message, 'font-weight: bold', 'font-weight: normal');
     }
 
     function makeButton(url) {
