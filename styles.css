@@ -9,7 +9,7 @@
     padding: 0;
     margin-right: 0 !important;
 
-    font-family: 'VSCO Gothic Medium, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif';
+    font-family: VSCO Gothic Medium, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
     font-weight: 500;
     font-size: .875rem;
     line-height: 2.5rem;
@@ -20,6 +20,11 @@
     transform: translateY(4rem);
     transition: transform .2s ease-in-out;
     cursor: pointer;
+}
+
+.dl-btn:hover {
+    background-color: #000;
+    color: #fff;
 }
 
 .relative {
