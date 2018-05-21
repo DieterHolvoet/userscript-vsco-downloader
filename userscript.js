@@ -8,6 +8,7 @@
 // @grant        GM_download
 // @grant        GM_info
 // @grant        GM_notification
+// @grant        GM_getResourceText
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js
 // @require      https://bowercdn.net/c/jquery-observe-2.0.2/jquery-observe.js
 // @resource     styles https://raw.githubusercontent.com/DieterHolvoet/userscript-vsco-downloader/master/styles.css
