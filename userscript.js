@@ -10,14 +10,17 @@
 // @grant        GM_notification
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js
 // @require      https://bowercdn.net/c/jquery-observe-2.0.2/jquery-observe.js
+// @resource     styles https://raw.githubusercontent.com/DieterHolvoet/userscript-vsco-downloader/master/styles.css
 // ==/UserScript==
 
 (function() {
     'use strict';
 
-    var itemSelectors = '.MediaImage';
+    var itemSelectors = '.MediaImage, .article-image';
 
-    $(document.head).append('<style> .dl-btn { position: absolute; right: 15px; bottom: 15px; margin-right: 0 !important; background-color: white; transform: translateY(4rem); transition: transform .2s ease-in-out; } .relative { overflow: hidden } .relative:hover .dl-btn { transform: none; } </style>');
+    $(document.head).append(
+        $('<style />').text(GM_getResourceText('styles'))
+    );
 
     $(document.body).observe('childList subtree', handleSubtreeChange);
 
@@ -38,9 +41,12 @@
             return;
         }
 
-        var url = $(item).find('img').attr('src');
+        var $img = $(item).find('img');
+        var url = $img.attr('src');
 
-        $(item).find('.relative').append(makeButton(url));
+        $img.parent()
+            .addClass('relative')
+            .append(makeButton(url));
     }
 
     function download(url) {
@@ -75,7 +81,7 @@
     }
 
     function makeButton(url) {
-        var $btn = $('<button class="nav-getAppBtn Nav-getApp btn dl-btn">Download</button>').attr('href', url.split("?")[0]);
+        var $btn = $('<button class="dl-btn">Download</button>');
 
         $btn.on('click', function(e) {
             e.preventDefault();
