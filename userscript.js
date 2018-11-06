@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Download images from vsco.co
 // @namespace    http://www.dieterholvoet.com
-// @version      1.2.7
+// @version      1.2.8
 // @description  Adds download buttons for the full-resolution images to thumbnails all over vsco.co
 // @author       Dieter Holvoet
 // @match        *://vsco.co/*
@@ -14,7 +14,7 @@
 // @resource     styles https://raw.githubusercontent.com/DieterHolvoet/userscript-vsco-downloader/master/styles.css
 // ==/UserScript==
 
-(function() {
+(function () {
     'use strict';
 
     var itemSelectors = '.MediaImage, .article-image';
@@ -25,12 +25,20 @@
 
     $(document.body).observe('childList subtree', handleSubtreeChange);
 
+    $(document.body).ready(handleDocumentReady);
+
+    function handleDocumentReady(e) {
+        $(itemSelectors).each(function (i, $item) {
+            appendButton($item);
+        });
+    }
+
     function handleSubtreeChange(e) {
-        e.addedNodes.forEach(function(addedNode) {
+        e.addedNodes.forEach(function (addedNode) {
             if ($(addedNode).is(itemSelectors)) {
                 appendButton(addedNode);
             } else {
-                $(addedNode).find(itemSelectors).each(function(i, item) {
+                $(addedNode).find(itemSelectors).each(function (i, item) {
                     appendButton(item);
                 });
             }
@@ -38,7 +46,7 @@
     }
 
     function appendButton(item) {
-        if($(item).find('.dl-btn').length) {
+        if ($(item).find('.dl-btn').length) {
             return;
         }
 
@@ -84,7 +92,7 @@
     function makeButton(url) {
         var $btn = $('<button class="dl-btn">Download</button>');
 
-        $btn.on('click', function(e) {
+        $btn.on('click', function (e) {
             e.preventDefault();
             download(url);
         });
